@@ -8,11 +8,14 @@ weatherForm.addEventListener('submit', (e) => {
 
     const location = search.value
 
+    messageOne.textContent = 'Loading...'
+
     fetch('/weather?address=' + location).then((response) => {
         response.json().then((forcastData) => {
             if (forcastData.error) {
                 messageOne.textContent = forcastData.error
             } else {
+                console.log(forcastData.forecast)
                 messageOne.textContent = forcastData.forecast
             }
         })
